@@ -1,0 +1,11 @@
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\dotnet_2.exe
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\appsettings.Development.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\appsettings.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\dotnet_2.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\dotnet_2.deps.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\dotnet_2.runtimeconfig.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\dotnet_2.pdb
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\Microsoft.OpenApi.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\Swashbuckle.AspNetCore.Swagger.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dotnet_con_controller\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
