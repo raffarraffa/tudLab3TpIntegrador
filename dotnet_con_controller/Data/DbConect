@@ -1,0 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+
+public class DbContext : DbContext
+{
+    public nDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<Inmueble> Inmuebles { get; set; } // Define tus DbSets aquí
+}
