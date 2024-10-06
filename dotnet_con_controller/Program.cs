@@ -1,9 +1,7 @@
 
-using MySql.Data.MySqlClient; // Asegúrate de tener la referencia correcta
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Obtener cadena de conexión desde appsettings.json
+// cadena de conexión ->  appsettings.json
 var conexionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Registrar MySqlConnection en los servicios

@@ -31,3 +31,12 @@ google-services.json
 
 # Android Profiling
 *.hprof
+/dotnet_con_controller/obj
+/dotnet_con_controller/obj
+/dotnet_con_controller/obj/Debug
+/dotnet_con_controller/obj
+/dotnet_con_controller/obj
+/dotnet_con_controller/obj
+/Lab3Api/obj/Debug
+/Lab3Api/bin
+/Lab3Api/obj
