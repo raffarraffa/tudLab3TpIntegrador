@@ -20,7 +20,10 @@ namespace Lab3Api.Repositories
 
         public async Task<IEnumerable<Propietario>> GetAllAsync()
         {
-            return await _context.Propietarios.ToListAsync();
+            var sql = _context.Propietario.ToQueryString();
+            Console.WriteLine($"Consulta SQL ejecutada: {sql}");
+
+            return await _context.Propietario.ToListAsync();
         }
 
 
@@ -30,14 +33,14 @@ namespace Lab3Api.Repositories
 
         public async Task<Propietario?> GetByIdAsync(int id)
         {
-            return await _context.Propietarios.FindAsync(id);
+            return await _context.Propietario.FindAsync(id);
         }
 
         /// Agrega un nuevo propietario en la base de datos.
         /// param name="entidad" Entidad del propietario a agregar.
         public async Task AddAsync(Propietario entidad)
         {
-            await _context.Propietarios.AddAsync(entidad);
+            await _context.Propietario.AddAsync(entidad);
             await SaveAsync(); // Guardar cambios
         }
 
@@ -45,7 +48,9 @@ namespace Lab3Api.Repositories
         /// param name="entidad" Entidad del propietario a actualizar
         public async Task UpdateAsync(Propietario entidad)
         {
-            _context.Propietarios.Update(entidad);
+            var sql = _context.Propietario.ToQueryString();
+            Console.WriteLine(GetType().Name + $" Consulta SQL ejecutada: {sql}");
+            _context.Propietario.Update(entidad);
             await SaveAsync(); // Guardar cambios
         }
 
@@ -59,7 +64,7 @@ namespace Lab3Api.Repositories
             var propietario = await GetByIdAsync(id);
             if (propietario != null)
             {
-                _context.Propietarios.Remove(propietario);
+                _context.Propietario.Remove(propietario);
                 await SaveAsync(); // Guardar cambios
             }
         }
@@ -72,5 +77,35 @@ namespace Lab3Api.Repositories
         {
             await _context.SaveChangesAsync(); // Guardar cambios
         }
+        // public void  PatchAsync(Propietario entidad){    
+        //      Console.WriteLine("Patching");    
+        // }
+
+        // public async Task PatchAsync(Propietario entidad)
+        // {
+        //     var propietario = await _context.Propietario.FindAsync(entidad.Id);
+        //     if (propietario != null)
+        //     {
+        //         propietario.Nombre = entidad.Nombre;
+        //         _context.Entry(propietario).Property(x => x.Nombre).IsModified = true;
+        //         await SaveAsync();
+        //     }
+        // }
+
+        public async Task PatchAsync(Propietario propietario)
+        {
+            //aca debo implentar la captura del usuario segun el JWT, en lugar de confiar en los datos recibidos
+            //de moemnto pra debugear sirve
+            var propietarioDb = await _context.Propietario.FindAsync(propietario.Id);
+            if (propietarioDb == null)
+            {
+                throw new Exception("El propietario no existe en la base de datos.");
+            }
+            var sql = _context.Propietario.ToQueryString();
+            Console.WriteLine($"Consulta SQL ejecutada: {sql}");
+            _context.Entry(propietarioDb).CurrentValues.SetValues(propietario);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

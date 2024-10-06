@@ -13,5 +13,6 @@ namespace Lab3Api.Repositories
         Task UpdateAsync(T entidad);  // actualiza un registro
         Task DeleteAsync(int id); // elimina un registro
         Task SaveAsync(); // guarda los cambios en base
+        Task PatchAsync(T entidad);
     }
 }

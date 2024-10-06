@@ -10,7 +10,7 @@ namespace Lab3Api.Data
         {
         }
 
-        public DbSet<Propietario> Propietarios { get; set; }
+        public DbSet<Propietario> Propietario { get; set; }
 
 
     }

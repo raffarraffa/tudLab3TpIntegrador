@@ -1,5 +1,8 @@
 using Lab3Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Lab3Api.Models;
 
 namespace Lab3Api.Controllers
 {
@@ -7,26 +10,26 @@ namespace Lab3Api.Controllers
     [Route("api/[controller]")]
     public class PropietarioController : ControllerBase
     {
-        private readonly RPropietario _repositorio;
+        private readonly IRepository<Propietario> _repositorio;
 
-        public PropietarioController(RPropietario repositorio)
+        public PropietarioController(IRepository<Propietario> repositorio)
         {
             _repositorio = repositorio;
         }
 
-        // Ejemplo de una acción que devuelve todos los propietarios
+        // reurn todos los propietarios
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult<IEnumerable<Propietario>>> GetAll()
         {
-            var propietarios = _repositorio.GetAllAsync();
+            var propietarios = await _repositorio.GetAllAsync();
             return Ok(propietarios);
         }
 
-        // Ejemplo de una acción que devuelve un propietario específico por ID
+        // return un propietario específico por ID
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult<Propietario>> GetById(int id)
         {
-            var propietario = _repositorio.GetByIdAsync(id);
+            var propietario = await _repositorio.GetByIdAsync(id);
             if (propietario == null)
             {
                 return NotFound();
@@ -34,5 +37,80 @@ namespace Lab3Api.Controllers
             return Ok(propietario);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Propietario>> AddAsync(Propietario propietario)
+        {
+            try
+            {
+                Console.WriteLine(propietario.ToString());
+                if (propietario == null)
+                {
+                    return BadRequest("Propietario es null");
+                }
+                await _repositorio.AddAsync(propietario);
+                return Ok(propietario);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<Propietario>> UpdateAsync(Propietario propietario)
+        {
+            try
+            {
+                if (propietario == null)
+                {
+                    return BadRequest("Propietario es null");
+                }
+                await _repositorio.UpdateAsync(propietario);
+                return Ok(propietario);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Propietario>> DeleteAsync(int id)
+        {
+            try
+            {
+                var propietario = await _repositorio.GetByIdAsync(id);
+                if (propietario == null)
+                {
+                    return NotFound();
+                }
+                await _repositorio.DeleteAsync(id);
+                return Ok(propietario);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPatch]
+        public async Task<ActionResult<Propietario>> PatchAsync(Propietario propietario)
+        {
+            try
+            {
+                if (propietario == null)
+                {
+                    return BadRequest("Propietario es null");
+                }
+                await _repositorio.PatchAsync(propietario);
+                return Ok(propietario);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

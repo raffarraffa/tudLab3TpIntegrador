@@ -1,16 +1,37 @@
 using Microsoft.EntityFrameworkCore;
 using Lab3Api.Errors;
 using Lab3Api.Models;
+using Lab3Api.Data;
 using Lab3Api.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Cadena de conexión
+var connectionString = builder.Configuration.GetConnectionString("ConnectionProduction");
+// configuracion db
+#pragma warning disable CS8604
+builder.Services.AddDbContext<ApiDbContext>(options => options.UseMySQL(connectionString));
+#pragma warning restore CS8604
+// servicios
+builder.Services.AddScoped<RPropietario>();
+builder.Services.AddScoped<IRepository<Propietario>, RPropietario>();
 // cinfiguracion puertos
-builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001", "http://*:5000", "https://*:5001");
+builder.WebHost.UseUrls("http://localhost:8104");
 
 // Registrar controladores en los servicios
 builder.Services.AddControllers();
-
+// Configurar CORS
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        //    builder.WithOrigins("http://localhost:8104", "https://localhost:8105")
+        builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+    });
+});
 // Configurar Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,6 +45,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Aplicar CORS
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 
 app.UseRouting();
