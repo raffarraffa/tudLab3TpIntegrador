@@ -31,3 +31,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+/Lab3Api/bin
+/Lab3Api/obj/Debug
+/Lab3Api/obj
