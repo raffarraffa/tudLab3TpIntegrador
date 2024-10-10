@@ -1,0 +1,38 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Lab3TpIntegrador
+on:
+  push:
+    branches: [ "deploy" ] 
+  pull_request:
+    branches: [ "deploy" ]
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4 
+    - name: Preparando .NET
+      uses: actions/setup-dotnet@v4 
+      with:
+        dotnet-version: 8.0.x
+  
+    - name: Restaurar dependencias
+      run: dotnet restore ./dotnet
+    - name: construyendo salida
+      run: dotnet publish -o salida
+      
+    - name: 📂 Sincronizando archivos via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      with:
+        server:  ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        local-dir: ./dotnet -o salida
+        server-dir: ./www/lab3_ci/
+    - name: Mostrar logs si hay fallo
+      if: failure()
+      run: echo "Hubo un fallo en el paso anterior"
