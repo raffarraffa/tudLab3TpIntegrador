@@ -14,17 +14,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4 
+    
     - name: Preparando .NET
       uses: actions/setup-dotnet@v4 
       with:
         dotnet-version: 8.0.x
-    - name: Cambiar a directorio dotnet
-      run: cd /dotnet
 
     - name: Restaurar dependencias
-      run: restore dotnet.csproj
-    - name: construyendo salida
-      run: publish -o salida
+      run: dotnet restore dotnet.csproj
+      working-directory: ./dotnet  # Asegúrate de que este es el directorio correcto
+
+    - name: Construyendo salida
+      run: dotnet publish dotnet.csproj -o salida
+      working-directory: ./dotnet  # Asegúrate de que este es el directorio correcto
       
     - name: 📂 Sincronizando archivos via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -33,8 +35,9 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
-        local-dir: ./dotnet -o salida
+        local-dir: ./dotnet/salida  # Cambia la ruta a la salida generada
         server-dir: ./www/lab3_ci/
+        
     - name: Mostrar logs si hay fallo
       if: failure()
       run: echo "Hubo un fallo en el paso anterior"
