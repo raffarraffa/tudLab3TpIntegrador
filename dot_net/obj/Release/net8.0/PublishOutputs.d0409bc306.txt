@@ -1,0 +1,12 @@
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\dotnet.exe
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\appsettings.Development.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\appsettings.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\dotnet.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\dotnet.deps.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\dotnet.runtimeconfig.json
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\dotnet.pdb
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\Microsoft.AspNetCore.OpenApi.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\Microsoft.OpenApi.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\Swashbuckle.AspNetCore.Swagger.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\ESTUDIO\tuds 2024\laboratorio3\tpi\tudLab3Tpi\dot_net\salida\Swashbuckle.AspNetCore.SwaggerUI.dll
