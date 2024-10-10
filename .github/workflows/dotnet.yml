@@ -22,9 +22,9 @@ jobs:
       run: cd dotnet
 
     - name: Restaurar dependencias
-      run: dotnet restore ./dotnet
+      run: restore dotnet.csproj
     - name: construyendo salida
-      run: dotnet publish -o salida
+      run: publish -o salida
       
     - name: 📂 Sincronizando archivos via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
