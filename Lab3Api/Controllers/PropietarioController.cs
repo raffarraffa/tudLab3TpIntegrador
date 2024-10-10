@@ -11,9 +11,9 @@ namespace Lab3Api.Controllers
     [Route("api/[controller]")]
     public class PropietarioController : ControllerBase
     {
-        private readonly IRepository<Propietario> _repositorio;
+        private readonly RPropietario _repositorio;
 
-        public PropietarioController(IRepository<Propietario> repositorio)
+        public PropietarioController(RPropietario repositorio)
         {
             _repositorio = repositorio;
         }
