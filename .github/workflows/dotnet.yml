@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Cambiar a directorio dotnet
-      run: cd dotnet
+      run: cd /dotnet
 
     - name: Restaurar dependencias
       run: restore dotnet.csproj
