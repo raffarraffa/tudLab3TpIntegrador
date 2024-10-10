@@ -14,5 +14,6 @@ namespace Lab3Api.Repositories
         Task DeleteAsync(int id); // elimina un registro
         Task SaveAsync(); // guarda los cambios en base
         Task PatchAsync(T entidad);
+        // Task FindByAttributeAsync(string Attrib, string Value);
     }
 }

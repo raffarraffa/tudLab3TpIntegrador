@@ -89,22 +89,16 @@ namespace Lab3Api.Repositories
             {
                 throw new Exception("El propietario no existe en la base de datos.");
             }
-            if (propietario.Password.IsNullOrEmpty())
-            {
-                propietario.Password = propietarioDb.Password;
-                Console.WriteLine(propietarioDb.Password);
-                Console.WriteLine(propietario.Password);
-            }
-            else
-            {
-                propietario.Password = BCrypt.Net.BCrypt.HashPassword(propietario.Password);
-                Console.WriteLine(propietarioDb.Password);
-                Console.WriteLine(propietario.Password);
-            }
             var sql = _context.Propietario.ToQueryString();
             Console.WriteLine($"Consulta SQL ejecutada: {sql}");
             _context.Entry(propietarioDb).CurrentValues.SetValues(propietario);
             await _context.SaveChangesAsync();
+        }
+        public async Task<Propietario?> FindByEmailAsync(string email)
+        {
+            var propietario = await _context.Propietario.FirstOrDefaultAsync(p => p.Email == email);
+
+            return propietario;
         }
 
     }

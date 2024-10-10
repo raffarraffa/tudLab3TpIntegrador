@@ -116,6 +116,12 @@ namespace Lab3Api.Controllers
                 {
                     return BadRequest("Propietario es null");
                 }
+                if (!string.IsNullOrEmpty(propietario.Password))
+                {
+                    propietario.Password = BCrypt.Net.BCrypt.HashPassword(propietario.Password);
+
+                    Console.WriteLine(propietario.Password);
+                }
                 await _repositorio.PatchAsync(propietario);
                 return Ok(propietario);
             }
@@ -123,6 +129,38 @@ namespace Lab3Api.Controllers
             {
                 Console.WriteLine(e);
                 return BadRequest(e.Message);
+            }
+        }
+        [HttpPost("login")]
+        public async Task<ActionResult<Propietario>> Login(string email, string password)
+        {
+            try
+            {
+                // Busca el propietario por el email
+                var propietario = await _repositorio.FindByEmailAsync(email);
+
+                // Verifica si el propietario existe
+                if (propietario == null)
+                {
+                    return NotFound("Propietario no encontrado.");
+                }
+
+                // Verifica la contraseña
+                if (BCrypt.Net.BCrypt.Verify(password, propietario.Password))
+                {
+                    // Aquí podrías agregar la lógica para crear un token JWT o manejar la sesión
+                    return Ok(propietario); // Retorna el propietario o el token de sesión
+                }
+                else
+                {
+                    return BadRequest("Contraseña incorrecta.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores generales
+                Console.WriteLine($"Error en el inicio de sesión: {ex.Message}");
+                return StatusCode(500, "Error interno del servidor.");
             }
         }
     }
