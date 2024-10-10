@@ -22,11 +22,11 @@ jobs:
 
     - name: Restaurar dependencias
       run: dotnet restore dotnet.csproj
-      working-directory: ./dotnet  # Asegúrate de que este es el directorio correcto
+      working-directory: ./dot_net 
 
     - name: Construyendo salida
       run: dotnet publish dotnet.csproj -o salida
-      working-directory: ./dotnet  # Asegúrate de que este es el directorio correcto
+      working-directory: ./dot_net  
       
     - name: 📂 Sincronizando archivos via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
-        local-dir: ./dotnet/salida  # Cambia la ruta a la salida generada
+        local-dir: ./dot_net/salida 
         server-dir: ./www/lab3_ci/
         
     - name: Mostrar logs si hay fallo
