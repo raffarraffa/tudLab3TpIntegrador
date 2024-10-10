@@ -20,7 +20,7 @@ jobs:
         dotnet-version: 8.0.x
   
     - name: Restaurar dependencias
-      run: dotnet restore
+      run: dotnet restore ./dotnet
     - name: construyendo salida
       run: dotnet publish -o salida
       
@@ -31,7 +31,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
-        local-dir: ./salida/
+        local-dir: ./dotnet -o salida
         server-dir: ./www/lab3_ci/
     - name: Mostrar logs si hay fallo
       if: failure()
