@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("dotnet")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Lab3Api")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76a6e9ed2795541a76065c3f327d4425c11b0f24")]
-[assembly: System.Reflection.AssemblyProductAttribute("dotnet")]
-[assembly: System.Reflection.AssemblyTitleAttribute("dotnet")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21b470cfb0ce77a6b85c25dbca04862bd836e035")]
+[assembly: System.Reflection.AssemblyProductAttribute("Lab3Api")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Lab3Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

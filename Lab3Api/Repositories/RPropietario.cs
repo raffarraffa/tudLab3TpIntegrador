@@ -1,7 +1,8 @@
+using BCrypt.Net;
 using Lab3Api.Data;
 using Lab3Api.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
 namespace Lab3Api.Repositories
 {
     // Repositorio de Propietarios
@@ -77,20 +78,7 @@ namespace Lab3Api.Repositories
         {
             await _context.SaveChangesAsync(); // Guardar cambios
         }
-        // public void  PatchAsync(Propietario entidad){    
-        //      Console.WriteLine("Patching");    
-        // }
 
-        // public async Task PatchAsync(Propietario entidad)
-        // {
-        //     var propietario = await _context.Propietario.FindAsync(entidad.Id);
-        //     if (propietario != null)
-        //     {
-        //         propietario.Nombre = entidad.Nombre;
-        //         _context.Entry(propietario).Property(x => x.Nombre).IsModified = true;
-        //         await SaveAsync();
-        //     }
-        // }
 
         public async Task PatchAsync(Propietario propietario)
         {
@@ -100,6 +88,18 @@ namespace Lab3Api.Repositories
             if (propietarioDb == null)
             {
                 throw new Exception("El propietario no existe en la base de datos.");
+            }
+            if (propietario.Password.IsNullOrEmpty())
+            {
+                propietario.Password = propietarioDb.Password;
+                Console.WriteLine(propietarioDb.Password);
+                Console.WriteLine(propietario.Password);
+            }
+            else
+            {
+                propietario.Password = BCrypt.Net.BCrypt.HashPassword(propietario.Password);
+                Console.WriteLine(propietarioDb.Password);
+                Console.WriteLine(propietario.Password);
             }
             var sql = _context.Propietario.ToQueryString();
             Console.WriteLine($"Consulta SQL ejecutada: {sql}");

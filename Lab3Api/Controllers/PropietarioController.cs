@@ -2,6 +2,7 @@ using Lab3Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BCrypt.Net;
 using Lab3Api.Models;
 
 namespace Lab3Api.Controllers
@@ -47,6 +48,7 @@ namespace Lab3Api.Controllers
                 {
                     return BadRequest("Propietario es null");
                 }
+                propietario.Password = BCrypt.Net.BCrypt.HashPassword(propietario.Password);
                 await _repositorio.AddAsync(propietario);
                 return Ok(propietario);
             }
@@ -75,17 +77,28 @@ namespace Lab3Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
+        /// Elimina un propietario por id.   
+        /// param name="id"
+        /// return Propietario
+        /// response code="404" No se encontró el propietario solicitado.
+        /// response code="400" Error al eliminar el propietario.
+
         [HttpDelete("{id}")]
         public async Task<ActionResult<Propietario>> DeleteAsync(int id)
         {
             try
             {
+
                 var propietario = await _repositorio.GetByIdAsync(id);
                 if (propietario == null)
                 {
                     return NotFound();
                 }
-                await _repositorio.DeleteAsync(id);
+
+                propietario.Borrado = true;
+                await _repositorio.PatchAsync(propietario);
                 return Ok(propietario);
             }
             catch (Exception e)
