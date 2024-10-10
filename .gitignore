@@ -1,2 +1,4 @@
 /Lab3Api/bin
 /dotnet/obj
+/dotnet/obj/Debug/net8.0
+/dotnet/obj
