@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BQjep7stpRCTcUrrqB8p5IuD7s4IIzwx5n4ZKs8XN7lzZHl4DWKApmV/bCXerlG8axtpH0yFgPsQiJWKo12KJw==",
+  "dgSpecHash": "m85j4gbxntBDvCh/6w2PbnxpHj9wGemLFc6YJaicJNzEF7Kee/WF/hLOTXMZmZg5FNS5uq3lqNsM3W+abBCNPA==",
   "success": true,
-  "projectFilePath": "D:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
+  "projectFilePath": "d:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raffarraffa\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\raffarraffa\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",

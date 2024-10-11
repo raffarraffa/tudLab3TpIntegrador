@@ -3230,11 +3230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
+      "projectUniqueName": "d:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
       "projectName": "Lab3Api",
-      "projectPath": "D:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
+      "projectPath": "d:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\Lab3Api.csproj",
       "packagesPath": "C:\\Users\\raffarraffa\\.nuget\\packages\\",
-      "outputPath": "D:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\obj\\",
+      "outputPath": "d:\\ESTUDIO\\tuds 2024\\laboratorio3\\tpi\\tudLab3Tpi\\Lab3Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
